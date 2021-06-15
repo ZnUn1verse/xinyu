@@ -18,6 +18,11 @@ public class No69 {
         return l;
     }
 
+    /**
+     * java中的Math.sqrt()方法，对比测试
+     * @param x
+     * @return
+     */
     public static int mySqrt2(int x) {
         return (int) Math.sqrt(x);
     }
