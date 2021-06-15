@@ -1,4 +1,4 @@
-package datastructureandalgorithms.sparsearray;
+package datastructure.sparsearray;
 
 import java.io.*;
 

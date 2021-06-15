@@ -1,4 +1,6 @@
-package datastructureandalgorithms.queue;
+package datastructure.queue;
+
+import java.util.Scanner;
 
 /**
  * @author Xinyu Zhang
@@ -7,7 +9,61 @@ package datastructureandalgorithms.queue;
  * @date 2021 2021/6/14 22:29
  */
 public class ArrayQueueDemo {
-
+    public static void main(String[] args) {
+        //测试一把
+        //创建一个队列
+        ArrayQueue queue = new ArrayQueue(3);
+        //接收用户输入
+        char key = ' ';
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        //输出一个菜单
+        while (loop) {
+            System.out.println("s(show): 显示队列");
+            System.out.println("e(exit): 退出程序");
+            System.out.println("a(add): 添加数据到队列");
+            System.out.println("g(get): 从队列取出数据");
+            System.out.println("h(head): 查看队列头的数据");
+            //接收一个字符
+            key = scanner.next().charAt(0);
+            switch (key) {
+                case 's':
+                    queue.showQueue();
+                    break;
+                case 'a':
+                    System.out.println("输入一个数");
+                    int value = scanner.nextInt();
+                    queue.addQueue(value);
+                    break;
+                //取出数据
+                case 'g':
+                    try {
+                        int res = queue.getQueue();
+                        System.out.printf("取出的数据是%d\n", res);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                //查看队列头的数据
+                case 'h':
+                    try {
+                        int res = queue.headQueue();
+                        System.out.printf("队列头的数据是%d\n", res);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                //退出
+                case 'e':
+                    scanner.close();
+                    loop = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+        System.out.println("程序退出~~");
+    }
 }
 
 class ArrayQueue {
