@@ -26,8 +26,24 @@ public class No877 {
         return dp[length - 1] > 0;
     }
 
+    public static boolean stoneGame2(int[] piles) {
+        int n = piles.length;
+        if (n == 0) return false;
+        int[][] dp = new int[n][n];
+        for (int i=0;i<n;i++) {
+            dp[i][i] = piles[i];
+        }
+        for (int i=n-1;i>=0;i--) {
+            for (int j=i+1;j<n;j++) {
+
+                dp[i][j] = Math.max(piles[i] - dp[i + 1][j], piles[j] - dp[i][j - 1]);
+            }
+        }
+        return dp[0][n - 1] >= 0;
+    }
+
     public static void main(String[] args) {
         int[] arr = {5, 3, 4, 5};
-        System.out.println(No877.stoneGame(arr));
+        System.out.println(No877.stoneGame2(arr));
     }
 }
