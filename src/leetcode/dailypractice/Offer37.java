@@ -79,6 +79,6 @@ public class Offer37 {
 
     public static void main(String[] args) {
         Offer37 offer37 = new Offer37();
-        offer37.serialize();
+//        offer37.serialize();
     }
 }
