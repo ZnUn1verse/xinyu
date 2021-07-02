@@ -29,6 +29,12 @@ public class SingleLinkedListDemo {
         singleLinkedList1.addByNo(node4);
         singleLinkedList1.addByNo(node3);
         singleLinkedList1.list();
+        System.out.println("==========");
+        //修改链表某个节点
+        singleLinkedList1.update(new Node(1,"xinyu"));
+        //删除链表某个节点
+        singleLinkedList1.delete(new Node(5,null));
+        singleLinkedList1.list();
     }
 }
 
@@ -95,6 +101,52 @@ class SingleLinkedList {
         }
     }
 
+    //修改链表某个节点的数据
+    public void update(Node node){
+        Node temp = head.next;
+        //是否找到标志
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                //全部循环完成标志
+                break;
+            }
+            if (temp.no == node.no){
+                //找到数据标志
+                flag = true;
+                break;
+            }
+            //没找到数据，节点后移
+            temp = temp.next;
+        }
+        if(flag){
+            temp.data = node.data;
+        } else {
+            System.out.println("您输入的no" + node.no + "不存在！");
+        }
+    }
+
+    //删除链表某个节点的数据
+    public void delete(Node node){
+        Node temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                break;
+            }
+            if (temp.next.no == node.no){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if(flag){
+            temp.next = node.next;
+        } else {
+            System.out.println("您输入的no" + node.no + "不存在！");
+        }
+    }
+
     //遍历链表
     public void list() {
         //头结点不能动
@@ -139,7 +191,7 @@ class Node {
     public String toString() {
         return "Node{" +
                 "no=" + no +
-                ", data='" + data +
+                ", data='" + data + "'" +
                 '}';
     }
 }
